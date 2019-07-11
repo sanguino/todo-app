@@ -1,20 +1,15 @@
-version: '2.1'
+version: '2.3'
 services:
-  todo-gateway:
-    image: todo-gateway
-    restart: always
-    ports:
-      - "8080:8080"
-    depends_on:
-      todo-mongo:
-        condition: service_healthy
-      todo-api:
-        condition: service_started
+  todo-front:
+    image: todo-front:latest
   todo-mongo:
-    image: healthcheck/mongo
+    image: todo-mongo:latest
     restart: always
-    ports:
-      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/mongo-healthcheck"]
+      interval: 5s
+      timeout: 1s
+      retries: 5
   todo-api:
     image: todo-api:latest
     restart: always
@@ -25,5 +20,13 @@ services:
     depends_on:
       todo-mongo:
         condition: service_healthy
-  todo-front:
-    image: todo-front:latest
+  todo-gateway:
+    image: todo-gateway:latest
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      todo-mongo:
+        condition: service_healthy
+      todo-api:
+        condition: service_started
