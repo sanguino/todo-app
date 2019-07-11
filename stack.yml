@@ -1,7 +1,23 @@
-version: '3.1'
+version: '2.1'
 services:
+  gateway:
+    image: todo-gateway
+    restart: always
+    ports:
+      - "8080:8080"
   mongo:
-    image: mongo
+    image: healthcheck/mongo
     restart: always
     ports:
       - "27017:27017"
+  todo-api:
+    image: todo-api:latest
+    environment:
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - MONGO_DB=tasksDB
+    depends_on:
+      mongo:
+        condition: service_healthy
+  todo-front:
+    image: todo-front:latest
