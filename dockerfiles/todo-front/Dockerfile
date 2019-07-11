@@ -1,7 +1,7 @@
 # Copies in our code and runs NPM Install
 FROM node:latest AS base
 WORKDIR /usr/src/app
-RUN git clone git@github.com:sanguino/todo-front.git .
+RUN git clone git://github.com/sanguino/todo-front.git .
 RUN npm ci
 
 # Lints Code

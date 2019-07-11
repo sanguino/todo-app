@@ -5,6 +5,11 @@ services:
     restart: always
     ports:
       - "8080:8080"
+    depends_on:
+      todo-mongo:
+        condition: service_healthy
+      todo-api:
+        condition: service_started
   todo-mongo:
     image: healthcheck/mongo
     restart: always
@@ -18,7 +23,7 @@ services:
       - MONGO_PORT=27017
       - MONGO_DB=tasksDB
     depends_on:
-      mongo:
+      todo-mongo:
         condition: service_healthy
   todo-front:
     image: todo-front:latest
