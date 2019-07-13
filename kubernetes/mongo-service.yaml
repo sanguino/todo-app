@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: todo-mongo
+spec:
+  selector:
+    role: todo-mongo
+  ports:
+    - port: 27017
+      targetPort: 27017
