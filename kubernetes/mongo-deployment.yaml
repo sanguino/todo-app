@@ -22,6 +22,28 @@ spec:
           - "mongod"
           - "--bind_ip"
           - "0.0.0.0"
+        livenessProbe:
+          exec:
+            command:
+              - mongo
+              - --eval
+              - "db.adminCommand('ping')"
+          initialDelaySeconds: 120
+          timeoutSeconds: 10
+          failureThreshold: 5
+          periodSeconds: 6
+          successThreshold: 1
+        readinessProbe:
+          exec:
+            command:
+              - mongo
+              - --eval
+              - "db.adminCommand('ping')"
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
+          periodSeconds: 6
+          successThreshold: 1
         ports:
         - containerPort: 27017
         resources: {}
