@@ -5,6 +5,8 @@ services:
   todo-mongo:
     image: todo-mongo:latest
     restart: always
+    volumes:
+      - "mongodata:/data/db"
     healthcheck:
       test: ["CMD", "/usr/local/bin/mongo-healthcheck"]
       interval: 5s
@@ -30,3 +32,9 @@ services:
         condition: service_healthy
       todo-api:
         condition: service_started
+
+volumes:
+   mongodata:
+
+networks:
+   network1:
