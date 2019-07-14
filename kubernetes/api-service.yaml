@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: todo-api
+spec:
+  selector:
+    app: todo-api
+  ports:
+    - port: 3000
+      targetPort: 3000

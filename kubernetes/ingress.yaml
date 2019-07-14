@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: todo-gateway
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: todo-front
+          servicePort: 80
+      - path: /api/task
+        backend:
+          serviceName: todo-api
+          servicePort: 3000

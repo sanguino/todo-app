@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-front-deployment
+  labels:
+    app: todo-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-front
+  template:
+    metadata:
+      labels:
+        app: todo-front
+    spec:
+      containers:
+      - name: todo-front
+        image: todo-front:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
