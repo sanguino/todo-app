@@ -21,6 +21,14 @@ spec:
         ports:
         - containerPort: 3000
         resources: {}
+        livenessProbe:
+          httpGet:
+            path: /api/health/task
+            port: 3000
+        readinessProbe:
+          httpGet:
+            path: /api/health/task
+            port: 3000
         env:
           - name: MONGO_HOST
             value: "todo-mongo"
