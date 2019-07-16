@@ -1,5 +1,5 @@
 # Copies in our code and runs NPM Install
-FROM node-chrome:latest AS base
+FROM node-chrome:latest AS build
 WORKDIR /usr/src/app
 ADD https://api.github.com/repos/sanguino/todo-front/git/refs/heads/master ../version.json
 RUN git clone git://github.com/sanguino/todo-front.git .
