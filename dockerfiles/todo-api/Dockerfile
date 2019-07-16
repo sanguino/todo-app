@@ -4,22 +4,7 @@ WORKDIR /usr/src/app
 ADD https://api.github.com/repos/sanguino/todo-api/git/refs/heads/master ../version.json
 RUN git clone git://github.com/sanguino/todo-api.git .
 RUN npm ci
-
-# Lints Code
-FROM base AS linting
-WORKDIR /usr/src/app
-COPY --from=base /usr/src/app/ .
 RUN npm run lint
-
-# Gets Sonarqube Scanner from Dockerhub and runs it
-#FROM newtmitch/sonar-scanner:latest AS sonarqube
-#COPY --from=base /usr/src/app /usr/src
-#RUN sonar-scanner -Dsonar.projectBaseDir=/usr/src
-
-# Runs Unit Tests
-FROM base AS unit-tests
-WORKDIR /usr/src/app
-COPY --from=base /usr/src/app/ .
 RUN npm run test
 
 # Starts and Serves Web Page
