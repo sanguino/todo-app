@@ -25,10 +25,20 @@ spec:
           httpGet:
             path: /api/health/task
             port: 3000
+          initialDelaySeconds: 2
+          timeoutSeconds: 2
+          periodSeconds: 5
+          failureThreshold: 3
+          successThreshold: 1
         readinessProbe:
           httpGet:
             path: /api/health/task
             port: 3000
+          initialDelaySeconds: 2
+          timeoutSeconds: 2
+          periodSeconds: 5
+          failureThreshold: 3
+          successThreshold: 1
         env:
           - name: MONGO_HOST
             value: "todo-mongo"
