@@ -54,6 +54,3 @@ services:
 
 volumes:
    mongodata:
-
-networks:
-   network1:
