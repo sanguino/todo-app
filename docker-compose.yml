@@ -12,6 +12,13 @@ services:
       interval: 5s
       timeout: 1s
       retries: 5
+  mongo-admin:
+    image: mrvautin/adminmongo
+    ports:
+      - 1234:1234
+    environment:
+      - HOST=0.0.0.0
+      - PORT=1234
   todo-api:
     image: todo-api:latest
     restart: always
@@ -19,6 +26,18 @@ services:
       - MONGO_HOST=todo-mongo
       - MONGO_PORT=27017
       - MONGO_DB=tasksDB
+    depends_on:
+      todo-mongo:
+        condition: service_healthy
+  todo-auth:
+    image: todo-auth:latest
+    restart: always
+    environment:
+      - MONGO_HOST=todo-mongo
+      - MONGO_PORT=27017
+      - MONGO_DB=tasksDB
+      - SUPER_SECRET=pass
+      - TOKEN_EXPIRATION=86400
     depends_on:
       todo-mongo:
         condition: service_healthy
