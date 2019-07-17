@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: todo-auth
+spec:
+  selector:
+    app: todo-auth
+  ports:
+    - port: 3000
+      targetPort: 3000

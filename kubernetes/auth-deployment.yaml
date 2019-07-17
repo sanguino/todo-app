@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-auth-deployment
+  labels:
+    app: todo-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-auth
+  template:
+    metadata:
+      labels:
+        app: todo-auth
+    spec:
+      containers:
+      - name: todo-auth
+        image: todo-auth:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        resources: {}
+        livenessProbe:
+          httpGet:
+            path: /auth/health
+            port: 3000
+          initialDelaySeconds: 2
+          timeoutSeconds: 2
+          periodSeconds: 5
+          failureThreshold: 3
+          successThreshold: 1
+        readinessProbe:
+          httpGet:
+            path: /auth/health
+            port: 3000
+          initialDelaySeconds: 2
+          timeoutSeconds: 2
+          periodSeconds: 5
+          failureThreshold: 3
+          successThreshold: 1
+        env:
+          - name: MONGO_HOST
+            value: "todo-mongo"
+          - name: MONGO_PORT
+            value: "27017"
+          - name: MONGO_DB
+            value: "tasksDB"
+          - name: SUPER_SECRET
+            value: "pass"
+          - name: TOKEN_EXPIRATION
+            value: "86400"
