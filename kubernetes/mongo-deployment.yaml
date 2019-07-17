@@ -54,4 +54,4 @@ spec:
       - name: mongodata
         persistentVolumeClaim:
           claimName: mongodata
-status: {}
+
