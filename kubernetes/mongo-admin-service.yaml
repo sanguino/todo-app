@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mongo-admin
+spec:
+  type: NodePort
+  selector:
+    app: mongo-admin
+  ports:
+    - port: 1234
+      nodePort: 31234
+      targetPort: 1234

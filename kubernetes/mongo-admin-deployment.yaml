@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-admin-deployment
+  labels:
+    app: mongo-admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-admin
+  template:
+    metadata:
+      labels:
+        app: mongo-admin
+    spec:
+      containers:
+      - name: mongo-admin
+        image: mrvautin/adminmongo
+        ports:
+        - containerPort: 1234
+        resources: {}
+        env:
+          - name: "PORT"
+            value: "1234"
+          - name: "HOST"
+            value: "0.0.0.0"
