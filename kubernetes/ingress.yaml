@@ -1,7 +1,9 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: todo-gateway
+  annotations:
+    nginx.ingress.kubernetes.io/auth-response-headers: Authenticate
 spec:
   rules:
   - http:
@@ -13,4 +15,8 @@ spec:
       - path: /api/task
         backend:
           serviceName: todo-api
+          servicePort: 3000
+      - path: /auth
+        backend:
+          serviceName: todo-auth
           servicePort: 3000
