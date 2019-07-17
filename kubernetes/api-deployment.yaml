@@ -46,4 +46,5 @@ spec:
             value: "27017"
           - name: MONGO_DB
             value: "tasksDB"
-status: {}
+          - name: SUPER_SECRET
+            value: "pass"
