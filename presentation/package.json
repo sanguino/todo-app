@@ -1,0 +1,27 @@
+{
+  "name": "todo-app-presentation",
+  "version": "1.0.0",
+  "description": "Todo app devops repository",
+  "main": "index.js",
+  "scripts": {
+    "marp": "npm run marp:pdf & npm run marp:html & npm run marp:pptx",
+    "marp:pdf": "marp slides.md --pdf -o out/slides.pdf",
+    "marp:pptx": "marp slides.md --pptx -o out/slides.pptx",
+    "marp:html": "marp slides.md -o out/slides.html",
+    "premarp:html": "rm -rf out/assets",
+    "postmarp:html": "cp -R assets out"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sanguino/todo-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanguino/todo-app/issues"
+  },
+  "homepage": "https://github.com/sanguino/todo-app#readme",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^0.12.1"
+  }
+}
