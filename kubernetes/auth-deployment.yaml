@@ -25,18 +25,18 @@ spec:
           httpGet:
             path: /auth/health
             port: 3000
-          initialDelaySeconds: 2
-          timeoutSeconds: 2
-          periodSeconds: 5
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+          periodSeconds: 30
           failureThreshold: 3
           successThreshold: 1
         readinessProbe:
           httpGet:
             path: /auth/health
             port: 3000
-          initialDelaySeconds: 2
-          timeoutSeconds: 2
-          periodSeconds: 5
+          initialDelaySeconds: 20
+          timeoutSeconds: 10
+          periodSeconds: 30
           failureThreshold: 3
           successThreshold: 1
         env:
