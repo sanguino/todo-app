@@ -3,8 +3,8 @@
 <!-- $size: 16:9 1600px 1000px -->
 
 
-# From Docker to Kubernetes 101
-## Docker compose, multistage, healthchecks and todo-app included
+# <!-- fit --> From Docker to Kubernetes 101
+## <!-- fit --> Docker compose, multistage, healthchecks and todo-app included
 https://github.com/sanguino/todo-app
 
 ---
@@ -23,9 +23,10 @@ https://github.com/sanguino/todo-app
 ---
 
 <!-- paginate: true -->
-
 ## Another todo app
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/N6r-9ZzFgzw/0.jpg)](http://www.youtube.com/watch?v=N6r-9ZzFgzw)
+
+
+![x% center](assets/todo.gif)
 
 ---
 
@@ -66,22 +67,17 @@ CMD ["nginx"]
 ###### new way
 ``` dockerfile
 # Copies in our code and runs NPM Install and Lints Code
-FROM node:latest AS base
+FROM node-chrome AS base
 WORKDIR /usr/src/app
 COPY ./ .
 RUN ["npm", "ci"]
 RUN ["npm", "run", "lint"]
+RUN ["npm", "run", "test"]
 
 # Gets Sonarqube Scanner from Dockerhub and runs it
 FROM newtmitch/sonar-scanner:latest AS sonarqube
 COPY --from=base /usr/src/app/src /usr/src
-CMD ["sonar-scanner -Dsonar.projectBaseDir=/usr/src"]
-
-# Runs Unit Tests
-FROM node-chrome AS unit-tests
-WORKDIR /usr/src/app
-COPY --from=base /usr/src/app/ .
-RUN ["npm", "run", "test"]
+RUN ["sonar-scanner -Dsonar.projectBaseDir=/usr/src"]
 
 # Runs Build
 FROM base AS build
@@ -118,9 +114,9 @@ COPY --from=base /usr/src/app/ .
 
 #### Docker multi stage
 
-#### Demo time: Build of todo-front pipeline
+#### Build of todo-front pipeline
 
-![](slides/assets/replaceme.gif)
+![x% center](assets/docker-build.gif)
 
 
 ---
@@ -176,10 +172,7 @@ volumes:
 ---
 
 #### Docker healthcheck
-
-* HEALTHCHECK let you implement a command that expose if the container is healthy or not. The command should exit with 1 when non healthy and 0 when healthy
-* using condition `service_healthy` on `dependes_on` will make api container waits until mongo is up to starts.
-* But docker swarm, and docker compose v3.x, does not respect depends_on, so you need to stay in version upper than 2.1 and less than 3.
+- Example of how to implement healthcheck using compose
 ``` yaml
 version: '2.3'
 services:
@@ -195,15 +188,24 @@ services:
       todo-mongo:
         condition: service_healthy
 ```
+- Example of how to implement healthcheck in a docker file
+``` dockerfile
+HEALTHCHECK [OPTIONS] CMD command
+```
+---
+
+#### Docker healthcheck
+
+- HEALTHCHECK let you implement a command that expose if the container is healthy or not. 
+- The command should exit with 1 when non healthy and 0 when healthy
+- Using condition `service_healthy` on `dependes_on` will make api container waits until mongo is up to starts.
+- But docker swarm, and docker compose v3.x, does not respect depends_on, so you need to stay in version upper than 2.1 and less than 3.
 
 ---
 
 #### Docker healthcheck
 
-* Another way to implement healthcheck is in the docker file:
-``` dockerfile
-HEALTHCHECK [OPTIONS] CMD command
-```
+
 * Anyway you use it in compose or dockerfile, you could set some options:
 
 ``` bash
@@ -217,7 +219,6 @@ retries (default: 3) consecutive failures to be considered unhealthy.
 ``` dockerfile
 HEALTHCHECK NONE
 ```
-* or in compose
 ``` yaml
 healthcheck:
   disable: true
@@ -251,15 +252,28 @@ services:
 
 ---
 
+#### Todo app in docker compose
+
+![x% center](assets/demogods.jpg)
+
+---
+
+
+#### Todo app in docker compose if demo gods doesn't listen
+
+![x% center](assets/docker-compose.gif)
+
+---
+
 #### Kubernetes
 
 > Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.
 
-* Kubernetes is a system for managing containerized applications across a cluster of nodes
+- Kubernetes is a system for managing containerized applications across a cluster of nodes
 
-* You could use k8s in a imperative way, like docker, but the real power of k8s is that you can use it in a declarative way. 
+- You could use k8s in a imperative way, like docker, but the real power of k8s is that you can use it in a declarative way. 
 
-* Describe your desired state, and k8s will try to keep it.
+- Describe your desired state, and k8s will try to keep it.
 
 ---
 
@@ -267,51 +281,107 @@ services:
 
 ### Kubernetes is a system for managing containerized applications across a cluster of nodes
 
-* Each node runs kubernetes it self and are where your containerized apps run
+- Each node runs kubernetes it self and are where your containerized apps run
 
-* Master node is the controlling node and operate as the main management contact point for users. 
+- Master node is the controlling node and operate as the main management contact point for users. 
 
-![](slides/assets/cluster.svg)
+- You run your containerized apps in nodes and you control them through the master.
+---
 
-![](slides/assets/node.svg)
+### Kubernetes
 
-* You run your containerized apps in nodes and you control them through the master.assts
+![x% center](assets/cluster.jpg)
+
+---
+
+### Kubernetes
+
+![x% center](assets/node.jpg)
+
+
 
 ---
 
 #### Kubernetes Work Units
 
-* **Pod** is the most basic unit in Kubernetes. Could consist of any number (1-n) of containers that share resources like storage, and has a unique network IP. Its like your local machine running N containers.
+- **Pod** is the most basic unit in Kubernetes. Could consist of any number (1-n) of containers that share resources like storage, and has a unique network IP. Its like your local machine running N containers with volumes. In general best option is 1 pod 1 container.
 
-![](slides/assets/pods.svg)
-
----
-
-#### Kubernetes Work Units
-
-* **Service** is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. Could be exposed outside k8s with nodeport or with an ingress.
-
-* **Label** is an arbitrary tag to mark work units. Is the way to config witch service will be able to forward traffic to those pods.
-
-![](slides/assets/service1.svg)
+![x% center](assets/pods.jpg)
 
 ---
 
 #### Kubernetes Work Units
 
+- **DNS** Every Service defined in the cluster (including the DNS server itself) is assigned a DNS name.
 
-* **Deployment** is your desired state of pods. It's a declarative syntax to create/update pods.
+- **Service** is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. Could be exposed outside k8s with nodeport or with an ingress.
 
-* **Ingress** recomended way to manage external access to the services. Provides load balancing, SSL termination. It's a ngix that expose a 80/443 port outside kubernetes.
+---
+
+#### Kubernetes Work Units
 
 
-![](slides/assets/service1.svg)
+- **Deployment** is your desired state of pods. It's a declarative syntax to create/update pods.
+
+- **Label** is an arbitrary tag to mark work units. Is the way to config witch service will be able to forward traffic to those pods.
+
+---
+
+#### Kubernetes Work Units
+
+![x% center](assets/service1.jpg)
+
+---
+
+#### Kubernetes Work Units
+
+- **Ingress** recomended way to manage external access to the services. Provides load balancing, SSL termination. It's a ngix that expose a 80/443 port outside kubernetes.
+
+``` yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: todo-gateway
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: todo-front
+          servicePort: 80
+      - path: /api/task
+        backend:
+          serviceName: todo-api
+          servicePort: 3000
+      - path: /auth
+        backend:
+          serviceName: todo-auth
+          servicePort: 3000
+```
+---
+
+#### Kubernetes Work Units
+
+![x% center](assets/ingress.jpg)
+
+---
+
+#### Kubernetes Work Units
+
+- **Nodeport** Exposes the Service on each Node’s IP at a static port (the NodePort).
+
+---
+
+#### Kubernetes Work Units
+
+![x% center](assets/nodeport.jpg)
 
 ---
 
 #### Minikube
 
-* Minikube is a cli tool that runs a single-node Kubernetes cluster in a virtual machine on your personal computer.
+- Minikube is a cli tool that runs a single-node Kubernetes cluster in a virtual machine on your personal computer.
 
 ``` bash
 $ minikube start
@@ -337,6 +407,10 @@ spec:
       targetPort: 3000
 ```
 > `metadata` and `selector`  is what kubernetes uses to link a service, ingress, volumes and deployment between them.
+
+---
+
+#### Kubernetes declarative yaml
 
 ``` bash
 $ kubectl apply -f fileordirectory
@@ -389,6 +463,17 @@ spec:
 
 #### Deployments, liveness and readiness probes
 
+- **livenessProbe** Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations.
+
+- **readinessProbe** Sometimes, applications are temporarily unable to serve traffic. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.
+
+> probes could be a command, http or tcp.
+
+---
+
+#### Deployments, liveness and readiness probes
+
+
 ``` yaml
         livenessProbe:
           httpGet:
@@ -414,22 +499,6 @@ spec:
 
 --- 
 
-#### Deployments, environment
-
-``` yaml
-        env:
-          - name: MONGO_HOST
-            value: "todo-mongo"
-          - name: MONGO_PORT
-            value: "27017"
-          - name: MONGO_DB
-            value: "tasksDB"
-          - name: SUPER_SECRET
-            value: "pass"
-```
-
---- 
-
 #### Secrets
 
 ``` yaml
@@ -444,32 +513,26 @@ data:
 ```
 
 --- 
-#### Ingress
+
+#### Deployments, environment with secrets
 
 ``` yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: todo-gateway
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        backend:
-          serviceName: todo-front
-          servicePort: 80
-      - path: /api/task
-        backend:
-          serviceName: todo-api
-          servicePort: 3000
-      - path: /auth
-        backend:
-          serviceName: todo-auth
-          servicePort: 3000
+        env:
+          - name: MONGO_HOST
+            value: "todo-mongo"
+          - name: MONGO_PORT
+            value: "27017"
+          - name: MONGO_DB
+            value: "tasksDB"
+          - name: SUPER_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: jwtconfig
+                key: SUPER_SECRET
 ```
 
----
+--- 
+
 
 # The End
 
