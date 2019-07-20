@@ -19,7 +19,6 @@ spec:
         image: mrvautin/adminmongo
         ports:
         - containerPort: 1234
-        resources: {}
         env:
           - name: "PORT"
             value: "1234"

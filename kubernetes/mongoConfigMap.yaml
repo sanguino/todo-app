@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+data:
+  MONGO_HOST: "todo-mongo"
+  MONGO_PORT: "27017"
+  MONGO_DB: "tasksDB"

@@ -20,7 +20,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
-        resources: {}
         livenessProbe:
           httpGet:
             path: /api/health/task
@@ -41,11 +40,20 @@ spec:
           successThreshold: 1
         env:
           - name: MONGO_HOST
-            value: "todo-mongo"
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_HOST
           - name: MONGO_PORT
-            value: "27017"
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_PORT
           - name: MONGO_DB
-            value: "tasksDB"
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_DB
           - name: SUPER_SECRET
             valueFrom:
               secretKeyRef:
