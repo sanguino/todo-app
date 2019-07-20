@@ -27,7 +27,7 @@ spec:
             port: 3000
           initialDelaySeconds: 30
           timeoutSeconds: 10
-          periodSeconds: 30
+          periodSeconds: 10
           failureThreshold: 3
           successThreshold: 1
         readinessProbe:
@@ -47,4 +47,7 @@ spec:
           - name: MONGO_DB
             value: "tasksDB"
           - name: SUPER_SECRET
-            value: "pass"
+            valueFrom:
+              secretKeyRef:
+                name: jwtconfig
+                key: SUPER_SECRET
