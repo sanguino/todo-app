@@ -33,7 +33,7 @@ https://github.com/sanguino/todo-app
 
 ### Docker multi stage
 
-- Multi-stage builds allows you to create multiple intermediate images from the same Dockerfile.
+- Multi-stage builds allow you to create multiple intermediate images from the same Dockerfile.
 
 - You can use multiple FROM statements in your Dockerfile. Each FROM instruction begins a new stage of the build. 
 
@@ -58,7 +58,7 @@ RUN ["npm", "run", "build"]
 WORKDIR /usr/src/app/dist
 CMD ["nginx"]
 ```
-> resutl is a node + chrome + sonnar + nginx 500mb image
+> the result is a node + chrome + sonnar + nginx 500mb image
 
 ---
 
@@ -66,7 +66,7 @@ CMD ["nginx"]
 
 ###### new way
 ``` dockerfile
-# Copies in our code and runs NPM Install and Lints Code
+# Copy in our code, run NPM Install and Lint Code
 FROM node-chrome AS base
 WORKDIR /usr/src/app
 COPY ./ .
@@ -74,22 +74,22 @@ RUN ["npm", "ci"]
 RUN ["npm", "run", "lint"]
 RUN ["npm", "run", "test"]
 
-# Gets Sonarqube Scanner from Dockerhub and runs it
+# Get Sonarqube Scanner from Dockerhub and run it
 FROM newtmitch/sonar-scanner:latest AS sonarqube
 COPY --from=base /usr/src/app/src /usr/src
 RUN ["sonar-scanner -Dsonar.projectBaseDir=/usr/src"]
 
-# Runs Build
+# Run Build
 FROM base AS build
 WORKDIR /usr/src/app
 COPY --from=base /usr/src/app/ .
 RUN ["npm", "run", "build"]
 
-# Starts and Serves Web Page
+# Start and Serve Web Page
 FROM nginx:stable
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 ```
-> resutl is a standard nginx 100mb image
+> the result is a standard nginx 100mb image
 
 ---
 
@@ -104,11 +104,11 @@ COPY --from=base /usr/src/app/ .
 ```
 
 ###### PROS
-- From container about 500mb to only 100mb
-- In production we will have ony a ngix standar image and `dist` files.
+- From a container of about 500mb to only 100mb
+- In production we will have only a nginx standard image and `dist` files.
 
 ###### CONS
-- Build time of each stage is the same, but starting multiple containers and copying files between them increases the build time.
+- Build time of each stage is the same, but starting multiple containers and copying files between them increase the build time.
 
 ---
 
@@ -124,7 +124,7 @@ COPY --from=base /usr/src/app/ .
 #### Docker multi stage
 
 #### Target
-- This is great for production use, but during development I dont want to have to build production image everytime I do a change. 
+- This is great for production use, but during development I don't want to have to build production image everytime I do a change. 
 
 ``` bash
 $ docker build . --target=unit-test
@@ -136,13 +136,13 @@ build:
   target: build-env
 ...
 ```
-- This will stop after execute unit-test. For example in a PR / MR you could execute it until unit test, and all the stages after merging it with master.
+- This will stop after executing unit-test. For example in a PR / MR you could execute it until unit test, and all the stages after merging it with master.
 
 ---
 
 #### Docker multi stage
 
-### look at docker files in this repos:
+### look at docker files in these repos:
 
 https://github.com/sanguino/todo-front
 https://github.com/sanguino/todo-api
@@ -167,7 +167,7 @@ volumes:
    mongodata:
 
 ```
-> the problem with depends_on is that the container could be running, but the service not. So when mongo container is running, tha api and auth containers runs and fails conecting to mongo because the service is not running.
+> the problem with depends_on is that the container could be running, but the service not. So when mongo container is running, the api and auth containers will run and fail conecting to mongo because the service is not running.
 
 ---
 
@@ -196,26 +196,26 @@ HEALTHCHECK [OPTIONS] CMD command
 
 #### Docker healthcheck
 
-- HEALTHCHECK let you implement a command that expose if the container is healthy or not. 
-- The command should exit with 1 when non healthy and 0 when healthy
-- Using condition `service_healthy` on `dependes_on` will make api container waits until mongo is up to starts.
-- But docker swarm, and docker compose v3.x, does not respect depends_on, so you need to stay in version upper than 2.1 and less than 3.
+- HEALTHCHECK let you implement a command that exposes if the container is healthy or not. 
+- The command should exit with 1 when non healthy and 0 when healthy.
+- Using condition `service_healthy` on `dependes_on` will make api container wait until mongo is up to starts.
+- But docker swarm and docker compose v3.x do not respect depends_on, so you need to use a version upper than 2.1 and lower than 3.
 
 ---
 
 #### Docker healthcheck
 
 
-* Anyway you use it in compose or dockerfile, you could set some options:
+* Regardless of the way you use it (compose or dockerfile), you could set some options:
 
 ``` bash
-interval (default: 30s) first wait and interval between executons
+interval (default: 30s) first wait and interval between executions
 timeout (default: 30s) timeout of each single run
 start-period (default: 0s) initial wait to start checking
-retries (default: 3) consecutive failures to be considered unhealthy.
+retries (default: 3) consecutive failures to be considered unhealthy
 ```
 
-* You could disable a inherit healthcheck too
+* You could disable the inherit healthcheck too
 ``` dockerfile
 HEALTHCHECK NONE
 ```
@@ -267,11 +267,11 @@ services:
 
 #### Kubernetes
 
-> Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available.
+> Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support and tools are widely available.
 
 - Kubernetes is a system for managing containerized applications across a cluster of nodes
 
-- You could use k8s in a imperative way, like docker, but the real power of k8s is that you can use it in a declarative way. 
+- You could use k8s in an imperative way, like docker, but the real power of k8s is that you can use it in a declarative way. 
 
 - Describe your desired state, and k8s will try to keep it.
 
@@ -281,11 +281,11 @@ services:
 
 ### Kubernetes is a system for managing containerized applications across a cluster of nodes
 
-- Each node runs kubernetes it self and are where your containerized apps run
+- Each node runs kubernetes itself and it is the place where your containerized apps run
 
-- Master node is the controlling node and operate as the main management contact point for users. 
+- Master node is the controlling node and operates as the main management contact point for users. 
 
-- You run your containerized apps in nodes and you control them through the master.
+- You run your containerized apps in nodes and you control them through the master one.
 ---
 
 ### Kubernetes
@@ -304,7 +304,7 @@ services:
 
 #### Kubernetes Work Units
 
-- **Pod** is the most basic unit in Kubernetes. Could consist of any number (1-n) of containers that share resources like storage, and has a unique network IP. Its like your local machine running N containers with volumes. In general best option is 1 pod 1 container.
+- **Pod** is the most basic unit in Kubernetes. It could consist of any number (1-n) of containers that share resources like storage, and have a unique network IP. It's like your local machine running N containers with volumes. In general the best option is 1 pod 1 container.
 
 ![x% center](assets/pods.jpg)
 
@@ -314,7 +314,7 @@ services:
 
 - **DNS** Every Service defined in the cluster (including the DNS server itself) is assigned a DNS name.
 
-- **Service** is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. Could be exposed outside k8s with nodeport or with an ingress.
+- **Service** is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. It could be exposed outside k8s with nodeport or with an ingress.
 
 ---
 
@@ -323,7 +323,7 @@ services:
 
 - **Deployment** is your desired state of pods. It's a declarative syntax to create/update pods.
 
-- **Label** is an arbitrary tag to mark work units. Is the way to config witch service will be able to forward traffic to those pods.
+- **Label** is an arbitrary tag to mark work units. It's the way to config which service will be able to forward traffic to those pods.
 
 ---
 
@@ -335,7 +335,7 @@ services:
 
 #### Kubernetes Work Units
 
-- **Ingress** recomended way to manage external access to the services. Provides load balancing, SSL termination. It's a ngix that expose a 80/443 port outside kubernetes.
+- **Ingress** is a recommended way to manage external access to the services. It provides load balancing, SSL termination. It's a nginx that exposes a 80/443 port outside kubernetes.
 
 ``` yaml
 apiVersion: extensions/v1beta1
@@ -406,7 +406,7 @@ spec:
     - port: 3000
       targetPort: 3000
 ```
-> `metadata` and `selector`  is what kubernetes uses to link a service, ingress, volumes and deployment between them.
+> `metadata` and `selector` are what kubernetes uses to link a service, ingress, volumes and deployment between them.
 
 ---
 
