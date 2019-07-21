@@ -1,10 +1,10 @@
 <!-- $theme: default -->
 <!-- class: invert -->
-<!-- $size: 16:9 1600px 1000px -->
+<!-- $size: 16:9 -->
 
 
-# <!-- fit --> From Docker to Kubernetes 101
-## <!-- fit --> Docker compose, multistage, healthchecks and todo-app included
+# Deploying web app, docker compose vs kubernetes
+### Docker compose, multistage, healthchecks and todo-app included
 https://github.com/sanguino/todo-app
 
 ---
@@ -43,7 +43,7 @@ https://github.com/sanguino/todo-app
 ---
 
 #### Docker multi stage
-###### old way
+
 
 ``` dockerfile
 FROM node-chrome-sonnar-nginx:latest
@@ -64,7 +64,6 @@ CMD ["nginx"]
 
 #### Docker multi stage
 
-###### new way
 ``` dockerfile
 # Copy in our code, run NPM Install and Lint Code
 FROM node-chrome AS base
@@ -205,8 +204,7 @@ HEALTHCHECK [OPTIONS] CMD command
 
 #### Docker healthcheck
 
-
-* Regardless of the way you use it (compose or dockerfile), you could set some options:
+- Regardless of the way you use it (compose or dockerfile), you could set some options:
 
 ``` bash
 interval (default: 30s) first wait and interval between executions
@@ -215,7 +213,8 @@ start-period (default: 0s) initial wait to start checking
 retries (default: 3) consecutive failures to be considered unhealthy
 ```
 
-* You could disable the inherit healthcheck too
+- You could disable the inherit healthcheck too
+
 ``` dockerfile
 HEALTHCHECK NONE
 ```
@@ -223,6 +222,16 @@ HEALTHCHECK NONE
 healthcheck:
   disable: true
 ```
+
+---
+
+
+#### Docker healthcheck
+
+- HEALTHCHECK let you implement a command that expose if the container is healthy or not. 
+- The command should exit with 1 when non healthy and 0 when healthy
+- Using condition `service_healthy` on `dependes_on` will make api container waits until mongo is up to starts.
+- But docker swarm, and docker compose v3.x, does not respect depends_on, so you need to stay in version upper than 2.1 and less than 3.
 
 ---
 
@@ -277,7 +286,7 @@ services:
 
 ---
 
-#### Kubernetes
+#### Kubernetes cluster
 
 ### Kubernetes is a system for managing containerized applications across a cluster of nodes
 
@@ -304,7 +313,8 @@ services:
 
 #### Kubernetes Work Units
 
-- **Pod** is the most basic unit in Kubernetes. It could consist of any number (1-n) of containers that share resources like storage, and have a unique network IP. It's like your local machine running N containers with volumes. In general the best option is 1 pod 1 container.
+
+- **Pod** is the most basic unit in Kubernetes. It could consist of any number (1-n) of containers that share resources like storage, and have a unique network IP. In general the best option is to have 1 container per pod.
 
 ![x% center](assets/pods.jpg)
 
@@ -312,14 +322,9 @@ services:
 
 #### Kubernetes Work Units
 
-- **DNS** Every Service defined in the cluster (including the DNS server itself) is assigned a DNS name.
+- **DNS** every Service defined in the cluster (including the DNS server itself) is assigned a DNS name.
 
 - **Service** is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. It could be exposed outside k8s with nodeport or with an ingress.
-
----
-
-#### Kubernetes Work Units
-
 
 - **Deployment** is your desired state of pods. It's a declarative syntax to create/update pods.
 
@@ -337,28 +342,6 @@ services:
 
 - **Ingress** is a recommended way to manage external access to the services. It provides load balancing, SSL termination. It's a nginx that exposes a 80/443 port outside kubernetes.
 
-``` yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: todo-gateway
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        backend:
-          serviceName: todo-front
-          servicePort: 80
-      - path: /api/task
-        backend:
-          serviceName: todo-api
-          servicePort: 3000
-      - path: /auth
-        backend:
-          serviceName: todo-auth
-          servicePort: 3000
-```
 ---
 
 #### Kubernetes Work Units
@@ -369,7 +352,7 @@ spec:
 
 #### Kubernetes Work Units
 
-- **Nodeport** Exposes the Service on each Node’s IP at a static port (the NodePort).
+- **Nodeport** Exposes the Service on each Nodeâ€™s IP at a static port (the NodePort).
 
 ---
 
@@ -387,7 +370,7 @@ spec:
 $ minikube start
 $ kubectl config use-context minikube
 $ eval $(minikube docker-env)
-$ bashminikube dashboard
+$ minikube dashboard
 ```
 
 ---
@@ -459,44 +442,6 @@ spec:
         ports:
         - containerPort: 3000
 ```
----
-
-#### Deployments, liveness and readiness probes
-
-- **livenessProbe** Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations.
-
-- **readinessProbe** Sometimes, applications are temporarily unable to serve traffic. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.
-
-> probes could be a command, http or tcp.
-
----
-
-#### Deployments, liveness and readiness probes
-
-
-``` yaml
-        livenessProbe:
-          httpGet:
-            path: /api/health/task
-            port: 3000
-          initialDelaySeconds: 30
-          timeoutSeconds: 10
-          periodSeconds: 30
-          failureThreshold: 3
-          successThreshold: 1
-```
-``` yaml
-        readinessProbe:
-          httpGet:
-            path: /api/health/task
-            port: 3000
-          initialDelaySeconds: 20
-          timeoutSeconds: 10
-          periodSeconds: 30
-          failureThreshold: 3
-          successThreshold: 1
-```
-
 --- 
 
 #### Secrets
@@ -532,6 +477,80 @@ data:
 ```
 
 --- 
+
+#### Ingress
+
+``` yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: todo-gateway
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: todo-front
+          servicePort: 80
+      - path: /api/task
+        backend:
+          serviceName: todo-api
+          servicePort: 3000
+      - path: /auth
+        backend:
+          serviceName: todo-auth
+          servicePort: 3000
+```
+
+---
+
+#### Deployments, liveness and readiness probes
+
+- **livenessProbe** Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations.
+
+- **readinessProbe** Sometimes, applications are temporarily unable to serve traffic. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.
+
+> probes could be a command, http or tcp.
+
+> Configuring correctly the probes, let you initiate your application in order, and when a pod has problem, let it and other pods to react.
+
+---
+
+#### Deployments, liveness and readiness probes
+
+
+``` yaml
+        livenessProbe:
+          httpGet:
+            path: /api/health/task
+            port: 3000
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+          periodSeconds: 30
+          failureThreshold: 3
+          successThreshold: 1
+```
+``` yaml
+        readinessProbe:
+          httpGet:
+            path: /api/health/task
+            port: 3000
+          initialDelaySeconds: 20
+          timeoutSeconds: 10
+          periodSeconds: 30
+          failureThreshold: 3
+          successThreshold: 1
+```
+
+---
+
+#### Todo app in kubernetes
+
+![x% center](assets/demogods2.jpg)
+
+---
+
 
 
 # The End
