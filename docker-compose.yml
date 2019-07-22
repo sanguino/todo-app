@@ -9,8 +9,8 @@ services:
       - "mongodata:/data/db"
     healthcheck:
       test: ["CMD", "/usr/local/bin/mongo-healthcheck"]
-      interval: 5s
-      timeout: 1s
+      interval: 10s
+      timeout: 10s
       retries: 5
   mongo-admin:
     image: mrvautin/adminmongo
@@ -26,6 +26,7 @@ services:
       - MONGO_HOST=todo-mongo
       - MONGO_PORT=27017
       - MONGO_DB=tasksDB
+      - SUPER_SECRET=pass
     depends_on:
       todo-mongo:
         condition: service_healthy
