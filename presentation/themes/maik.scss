@@ -13,7 +13,7 @@
  }
 
 @import '../node_modules/github-markdown-css/github-markdown';
-@import '../node_modules/highlight.js/styles/monokai-sublime';
+@import '../node_modules/highlight.js/styles/monokai';
 
 svg[data-marp-fitting='svg'] {
   max-height: 563px; // Slide height - padding * 2

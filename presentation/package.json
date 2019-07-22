@@ -9,7 +9,8 @@
     "marp:pptx": "marp slides.md --pptx -o out/slides.pptx",
     "marp:html": "marp slides.md -o out/slides.html",
     "premarp:html": "rm -rf out/assets",
-    "postmarp:html": "cp -R assets out"
+    "postmarp:html": "cp -R assets out",
+    "makeall": "node-sass themes/maik.scss themes/maik.css && marp slides.md  --theme-set themes/maik.css --output out/slides.html && open out/slides.html"
   },
   "repository": {
     "type": "git",

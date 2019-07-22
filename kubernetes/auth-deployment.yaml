@@ -12,7 +12,7 @@ spec:
   metrics:
     - resource:
         name: cpu
-        targetAverageUtilization: 30
+        targetAverageUtilization: 50
       type: Resource
 ---
 apiVersion: apps/v1

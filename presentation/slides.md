@@ -30,7 +30,10 @@ https://github.com/sanguino/todo-app
 
 ---
 
-TODO: architecture
+## Another todo app
+
+
+![x% center](assets/architecture.gif)
 
 ---
 
@@ -348,7 +351,7 @@ services:
 
 #### Kubernetes Work Units
 
-- **Nodeport** Exposes the Service on each NodeÃ¢â‚¬â„¢s IP at a static port (the NodePort).
+- **Nodeport** Exposes the Service on each Node's IP at a static port (the NodePort).
 
 ---
 
@@ -367,6 +370,8 @@ $ minikube start
 $ kubectl config use-context minikube
 $ eval $(minikube docker-env)
 $ minikube dashboard
+
+$ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
 ```
 
 ---
@@ -501,6 +506,27 @@ spec:
 
 ---
 
+### nodePort
+
+
+``` yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-admin
+spec:
+  type: NodePort
+  selector:
+    app: mongo-admin
+  ports:
+    - port: 1234
+      nodePort: 31234
+      targetPort: 1234
+```
+
+> you could expose any service using nodeport directly (> 30000). This is useful for admins like this or one service alone.
+---
+
 #### Deployments, liveness and readiness probes
 
 - **livenessProbe** Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations.
@@ -556,8 +582,26 @@ spec:
 
 ---
 
-kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
+#### Kubernetes Autoscaling
 
+``` yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: todo-auth
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: todo-auth-deployment
+  minReplicas: 3
+  maxReplicas: 30
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 50
+      type: Resource
+```
 
 ---
 
