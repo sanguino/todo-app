@@ -11,34 +11,47 @@ https://github.com/sanguino/todo-app
 
 ## Contents
 
-1. Another todo app :dog:
+1. Another todo app
 2. Docker multi stage
-3. Healthchecks
+3. Docker healthchecks
 4. Todo app running in docker-compose
 5. Kubernetes
+6. Kubernetes Work Units
 7. Minikube
-9. Liveness and readiness
+8. Liveness and readiness
+9. Ingress
 10. Todo app running in kubernetes
+11. Autoscaling
+12. Autoscaling "demo"
 
 ---
 
+# Another todo app 
 <!-- paginate: true -->
-## Another todo app
+
+---
+
+
+#### Another todo app
 
 
 ![x% center](assets/todo.gif)
 
 ---
 
-## Another todo app
+#### Another todo app
 
 
 ![x% center](assets/architecture.gif)
 
 ---
 
+# Docker multi stage 
 
-### Docker multi stage
+---
+
+
+#### Docker multi stage
 
 - Multi-stage allows you to create multiple intermediate images from the same Dockerfile.
 
@@ -51,7 +64,7 @@ https://github.com/sanguino/todo-app
 
 #### Docker multi stage
 
-
+###### without multistage
 ``` dockerfile
 FROM node-chrome-sonnar-nginx:latest
 WORKDIR /usr/src/app
@@ -59,20 +72,18 @@ COPY ./ .
 RUN ["npm", "ci"]
 RUN ["npm", "run", "lint"]
 RUN ["sonar-scanner -Dsonar.projectBaseDir=/usr/src/app"]
-RUN echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/chrome.list
 RUN ["npm", "run", "test"]
 RUN ["npm", "run", "build"]
 WORKDIR /usr/src/app/dist
 CMD ["nginx"]
 ```
-> the result is a node + chrome + sonnar + nginx 500mb image
+> The result is a node + chrome + sonnar + nginx 500mb image
 
 ---
 
 #### Docker multi stage
 
 ``` dockerfile
-# Copy, run NPM Install, Lint and Test our code.
 FROM node-chrome AS base
 WORKDIR /usr/src/app
 COPY ./ .
@@ -80,18 +91,15 @@ RUN ["npm", "ci"]
 RUN ["npm", "run", "lint"]
 RUN ["npm", "run", "test"]
 
-# Get Sonarqube Scanner from Dockerhub and run it
 FROM newtmitch/sonar-scanner:latest AS sonarqube
 COPY --from=base /usr/src/app/src /usr/src
 RUN ["sonar-scanner -Dsonar.projectBaseDir=/usr/src"]
 
-# Run Build
 FROM base AS build
 WORKDIR /usr/src/app
 COPY --from=base /usr/src/app/ .
 RUN ["npm", "run", "build"]
 
-# Start and Serve Web Page
 FROM nginx:stable
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 ```
@@ -120,9 +128,9 @@ COPY --from=base /usr/src/app/ .
 
 #### Docker multi stage
 
-#### Build of todo-front pipeline
+###### Build of todo-front pipeline
 
-![x% center](assets/docker-build.gif)
+![x% center](assets/docker-build-90.gif)
 
 
 ---
@@ -152,11 +160,16 @@ build:
 
 https://github.com/sanguino/todo-front
 https://github.com/sanguino/todo-api
-https://github.com/sanguino/todo-health
+https://github.com/sanguino/todo-auth
+https://github.com/sanguino/todo-app
 
 ---
 
-#### Docker healthcheck
+# Docker healthchecks
+
+---
+
+#### Docker healthchecks
 
 ``` yaml
 version: '2.3'
@@ -177,8 +190,10 @@ volumes:
 
 ---
 
-#### Docker healthcheck
-- Example of how to implement healthcheck using compose
+#### Docker healthchecks
+
+- Example of how to implement healthcheck using docker compose and docker file
+
 ``` yaml
 version: '2.3'
 services:
@@ -194,14 +209,13 @@ services:
       todo-mongo:
         condition: service_healthy
 ```
-- Example of how to implement healthcheck in a docker file
 ``` dockerfile
 HEALTHCHECK [OPTIONS] CMD command
 ```
 
 ---
 
-#### Docker healthcheck
+#### Docker healthchecks
 
 - Regardless of the way you use it (compose or dockerfile), you could set some options:
 
@@ -225,7 +239,7 @@ healthcheck:
 ---
 
 
-#### Docker healthcheck
+#### Docker healthchecks
 
 - HEALTHCHECK let you implement a command that exposes if the container is healthy or not. 
 - The command should exit with 1 when non healthy and 0 when healthy.
@@ -234,7 +248,7 @@ healthcheck:
 
 ---
 
-#### Docker healthcheck
+#### Docker healthchecks
 
 ``` yaml
 version: '2.3'
@@ -260,16 +274,21 @@ services:
 
 ---
 
-#### Todo app in docker compose
+## Todo app running in docker-compose
 
 ![x% center](assets/demogods.jpg)
 
 ---
 
 
-#### Todo app in docker compose if demo gods doesn't listen
+## Todo app running in docker-compose 
+> in case demo gods doesn't listen
 
 ![x% center](assets/docker-compose.gif)
+
+---
+
+# Kubernetes
 
 ---
 
@@ -287,7 +306,7 @@ services:
 
 #### Kubernetes cluster
 
-### Kubernetes is a system for managing containerized applications across a cluster of nodes
+###### Kubernetes is a system for managing containerized applications across a cluster of nodes
 
 - Each node runs kubernetes itself and it is the place where your containerized apps run
 
@@ -296,13 +315,13 @@ services:
 - You run your containerized apps in nodes and you control them through the master one.
 ---
 
-### Kubernetes
+### Kubernetes cluster
 
 ![x% center](assets/cluster.jpg)
 
 ---
 
-### Kubernetes
+### Kubernetes nodes
 
 ![x% center](assets/node.jpg)
 
@@ -319,13 +338,21 @@ services:
 
 ---
 
+- **Service** is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. It could be exposed outside k8s with nodeport or with an ingress.
+
+![x% center](assets/service1.jpg)
+
+---
+
+- **Deployment** is your desired state of pods. It's a declarative syntax to create/update pods.
+
+![x% center](assets/deployment2.jpg)
+
+--- 
+
 #### Kubernetes Work Units
 
 - **DNS** every Service defined in the cluster (including the DNS server itself) is assigned a DNS name.
-
-- **Service** is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. It could be exposed outside k8s with nodeport or with an ingress.
-
-- **Deployment** is your desired state of pods. It's a declarative syntax to create/update pods.
 
 - **Label** is an arbitrary tag to mark work units. It's the way to config which service will be able to forward traffic to those pods.
 
@@ -333,17 +360,7 @@ services:
 
 #### Kubernetes Work Units
 
-![x% center](assets/service1.jpg)
-
----
-
-#### Kubernetes Work Units
-
 - **Ingress** is a recommended way to manage external access to the services. It provides load balancing, SSL termination. It's a nginx that exposes a 80/443 port outside kubernetes.
-
----
-
-#### Kubernetes Work Units
 
 ![x% center](assets/ingress.jpg)
 
@@ -352,10 +369,6 @@ services:
 #### Kubernetes Work Units
 
 - **Nodeport** Exposes the Service on each Node's IP at a static port (the NodePort).
-
----
-
-#### Kubernetes Work Units
 
 ![x% center](assets/nodeport.jpg)
 
@@ -371,7 +384,8 @@ $ kubectl config use-context minikube
 $ eval $(minikube docker-env)
 $ minikube dashboard
 
-$ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
+$ kubectl create -f https://raw.githubusercontent.com/kubernetes/
+    heapster/master/deploy/kube-config/influxdb/heapster.yaml
 ```
 
 ---
@@ -390,7 +404,7 @@ spec:
     - port: 3000
       targetPort: 3000
 ```
-> `metadata` and `selector` are what kubernetes uses to link a service, ingress, volumes and deployment between them.
+> `metadata` and `selector` are the labels that kubernetes use to link a service, ingress, volumes and deployment between them.
 
 ---
 
@@ -400,21 +414,6 @@ spec:
 $ kubectl apply -f fileordirectory
 ```
 > use `apply` instead of `create`, execution of apply multiple time makes kubernetes updates the config. 
----
-#### Services
-
-``` yaml
-kind: Service
-apiVersion: v1
-metadata:
-  name: todo-api
-spec:
-  selector:
-    app: todo-api
-  ports:
-    - port: 3000
-      targetPort: 3000
-```
 
 ---
 #### Deployments
@@ -443,6 +442,23 @@ spec:
         ports:
         - containerPort: 3000
 ```
+
+---
+#### Services
+
+``` yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: todo-api
+spec:
+  selector:
+    app: todo-api
+  ports:
+    - port: 3000
+      targetPort: 3000
+```
+
 --- 
 
 #### Secrets
@@ -460,16 +476,40 @@ data:
 
 --- 
 
-#### Deployments, environment with secrets
+#### Secrets
+
+``` yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+data:
+  MONGO_HOST: "todo-mongo"
+  MONGO_PORT: "27017"
+  MONGO_DB: "tasksDB"
+```
+
+--- 
+
+#### Deployments, environment with secrets and configs
 
 ``` yaml
         env:
-          - name: MONGO_HOST
-            value: "todo-mongo"
+           - name: MONGO_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_HOST
           - name: MONGO_PORT
-            value: "27017"
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_PORT
           - name: MONGO_DB
-            value: "tasksDB"
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_DB
           - name: SUPER_SECRET
             valueFrom:
               secretKeyRef:
@@ -524,7 +564,7 @@ spec:
       targetPort: 1234
 ```
 
-> you could expose any service using nodeport directly (> 30000). This is useful for admins like this or one service alone.
+> you could expose any service using nodeport directly (> 30000). This is useful for admins like mongo admin, but not recomended to expose an api.
 ---
 
 #### Deployments, liveness and readiness probes
@@ -576,6 +616,7 @@ spec:
 #### Kubernetes Autoscaling
 
 - **Horizontal Pod Autoscaler** scales the number of pod replicas. You could use CPU, memory or custom metrics as the triggers to scale more pod replicas or less.
+
 - **Vertical Pods Autoscaler** allocates more (or less) cpu or memory to existing pods.
 
 > VPA and HPA are not yet compatible with each other and cannot work on the same pods.
@@ -605,7 +646,15 @@ spec:
 
 ---
 
+#### TODO for the next day
 
+* best autoscaling examples
+* run it in openshift
+* configure hooks and pipelines to automatic build and deply on git changes
+* change ingress to router
+
+
+---
 
 # The End
 

@@ -1,0 +1,44 @@
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bolder;
+  font-family: 'Comfortaa',-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+.markdown-body, section {
+  font-family: 'Comfortaa',-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+pre {
+  border-radius: 15px;
+  background: #111 !important;
+  border-color: #111 !important;
+  padding: 20px 25px;
+ }
+
+pre:before {
+  content: url('assets/mac_buttons.png');
+  position: relative;
+  top: -8px;
+  left: -15px;
+}
+
+
+.icons span, .icons:before, .icons:after {
+  display: inline-block;
+  float: left;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+img[alt="x% center"] {
+  margin: auto;
+  display: block;
+}
+
+h1 {
+  color: #e25253 !important;
+}
+a {
+  color: #b74f59 !important;
+}

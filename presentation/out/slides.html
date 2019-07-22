@@ -53,9 +53,6 @@
  * @auto-scaling true
  * @size 4:3 960px 720px
  */
-article#presentation > svg > foreignObject > section pre {
-  border-radius: 20px; }
-
 @font-face {
   font-family: octicons-link;
   src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff"); }
@@ -1017,16 +1014,92 @@ article#presentation > svg > foreignObject > section {
   article#presentation > svg > foreignObject > section[data-color] h5,
   article#presentation > svg > foreignObject > section[data-color] h6 {
     color: currentColor; }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] {
+
+/* latin-ext */
+@font-face {
+  font-family: 'Concert One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Concert One"), local("ConcertOne-Regular"), url(assets/VEM1Ro9xs5PjtzCu-srDqSTsjP6gukARXRY.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Concert One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Concert One"), local("ConcertOne-Regular"), url(assets/VEM1Ro9xs5PjtzCu-srDqSTijP6gukAR.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(assets/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMDr0fJh1Zyc61YBlG.woff) format("woff");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(assets/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMDrMfJh1Zyc61YA.woff) format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+article#presentation > svg > foreignObject > section h1, article#presentation > svg > foreignObject > section h2, article#presentation > svg > foreignObject > section h3, article#presentation > svg > foreignObject > section h4, article#presentation > svg > foreignObject > section h5, article#presentation > svg > foreignObject > section h6 {
+  font-weight: bolder;
+  font-family: 'Comfortaa',-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol; }
+
+article#presentation > svg > foreignObject > section .markdown-body, article#presentation > svg > foreignObject > section, article#presentation > svg > foreignObject > section {
+  font-family: 'Comfortaa',-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol; }
+
+article#presentation > svg > foreignObject > section pre {
+  border-radius: 15px;
+  background: #111 !important;
+  border-color: #111 !important;
+  padding: 20px 25px; }
+
+article#presentation > svg > foreignObject > section pre:before {
+  content: url("assets/mac_buttons.png");
+  position: relative;
+  top: -8px;
+  left: -15px; }
+
+article#presentation > svg > foreignObject > section .icons span, article#presentation > svg > foreignObject > section .icons:before, article#presentation > svg > foreignObject > section .icons:after {
+  display: inline-block;
+  float: left;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin-right: 0.5em; }
+
+article#presentation > svg > foreignObject > section img[alt="x% center"] {
+  margin: auto;
+  display: block; }
+
+article#presentation > svg > foreignObject > section h1 {
+  color: #e25253 !important; }
+
+article#presentation > svg > foreignObject > section a {
+  color: #b74f59 !important; }
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] {
   padding: 0 !important;
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"]::before,
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"]::before,
 article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"]::after,
 article#presentation > svg > foreignObject > section[data-marpit-advanced-background="content"]::before,
 article#presentation > svg > foreignObject > section[data-marpit-advanced-background="content"]::after {
   display: none !important;
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] {
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] {
   all: initial;
   display: flex;
   flex-direction: row;
@@ -1034,16 +1107,20 @@ article#presentation > svg > foreignObject > section[data-marpit-advanced-backgr
   overflow: hidden;
   width: 100%;
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction="vertical"] {
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction="vertical"] {
   flex-direction: column;
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split] > div[data-marpit-advanced-background-container] {
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split] > div[data-marpit-advanced-background-container] {
   width: var(--marpit-advanced-background-split, 50%);
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split="right"] > div[data-marpit-advanced-background-container] {
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split="right"] > div[data-marpit-advanced-background-container] {
   margin-left: calc(100% - var(--marpit-advanced-background-split, 50%));
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure {
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure {
   all: initial;
   background-position: center;
   background-repeat: no-repeat;
@@ -1051,15 +1128,18 @@ article#presentation > svg > foreignObject > section[data-marpit-advanced-backgr
   flex: auto;
   margin: 0;
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="content"],
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="content"],
 article#presentation > svg > foreignObject > section[data-marpit-advanced-background="pseudo"] {
   background: transparent !important;
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background="pseudo"],
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background="pseudo"],
 article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced-background="pseudo"] {
   pointer-events: none !important;
 }
-  article#presentation > svg > foreignObject > section[data-marpit-advanced-background-split] {
+
+article#presentation > svg > foreignObject > section[data-marpit-advanced-background-split] {
   width: 100%;
   height: 100%;
 }
@@ -1071,25 +1151,36 @@ article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-class="invert" data-theme="default" class="invert" style="--class:invert;--theme:default;">
 <h2>Contents</h2>
 <ol>
-<li>Another todo app <img class="emoji" draggable="false" alt="🐶" src="https://twemoji.maxcdn.com/2/svg/1f436.svg" data-marp-twemoji=""/></li>
+<li>Another todo app</li>
 <li>Docker multi stage</li>
-<li>Healthchecks</li>
+<li>Docker healthchecks</li>
 <li>Todo app running in docker-compose</li>
 <li>Kubernetes</li>
+<li>Kubernetes Work Units</li>
 <li>Minikube</li>
 <li>Liveness and readiness</li>
+<li>Ingress</li>
 <li>Todo app running in kubernetes</li>
+<li>Autoscaling</li>
+<li>Autoscaling &quot;demo&quot;</li>
 </ol>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="3" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h2>Another todo app</h2>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="3" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h1>Another todo app</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="4" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Another todo app</h4>
 <p><img src="assets/todo.gif" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="4" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<p>TODO: architecture</p>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="5" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Another todo app</h4>
+<p><img src="assets/architecture.gif" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="5" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h3>Docker multi stage</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="6" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h1>Docker multi stage</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="7" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Docker multi stage</h4>
 <ul>
 <li>
 <p>Multi-stage allows you to create multiple intermediate images from the same Dockerfile.</p>
@@ -1102,46 +1193,42 @@ article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="6" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="8" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Docker multi stage</h4>
+<h6>without multistage</h6>
 <pre><code class="language-dockerfile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">FROM</span> node-chrome-sonnar-nginx:latest
 <span class="hljs-keyword">WORKDIR</span><span class="bash"> /usr/src/app</span>
 <span class="hljs-keyword">COPY</span><span class="bash"> ./ .</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"ci"</span>]</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"run"</span>, <span class="hljs-string">"lint"</span>]</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"sonar-scanner -Dsonar.projectBaseDir=/usr/src/app"</span>]</span>
-<span class="hljs-keyword">RUN</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">'deb http://dl.google.com/linux/chrome/deb/ stable main'</span> &gt; /etc/apt/sources.list.d/chrome.list</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"run"</span>, <span class="hljs-string">"test"</span>]</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"run"</span>, <span class="hljs-string">"build"</span>]</span>
 <span class="hljs-keyword">WORKDIR</span><span class="bash"> /usr/src/app/dist</span>
 <span class="hljs-keyword">CMD</span><span class="bash"> [<span class="hljs-string">"nginx"</span>]</span>
 </span></span></foreignObject></svg></code></pre>
 <blockquote>
-<p>the result is a node + chrome + sonnar + nginx 500mb image</p>
+<p>The result is a node + chrome + sonnar + nginx 500mb image</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="7" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="9" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Docker multi stage</h4>
-<pre><code class="language-dockerfile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># Copy, run NPM Install, Lint and Test our code.</span>
-<span class="hljs-keyword">FROM</span> node-chrome AS base
+<pre><code class="language-dockerfile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">FROM</span> node-chrome AS base
 <span class="hljs-keyword">WORKDIR</span><span class="bash"> /usr/src/app</span>
 <span class="hljs-keyword">COPY</span><span class="bash"> ./ .</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"ci"</span>]</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"run"</span>, <span class="hljs-string">"lint"</span>]</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"run"</span>, <span class="hljs-string">"test"</span>]</span>
 
-<span class="hljs-comment"># Get Sonarqube Scanner from Dockerhub and run it</span>
 <span class="hljs-keyword">FROM</span> newtmitch/sonar-scanner:latest AS sonarqube
 <span class="hljs-keyword">COPY</span><span class="bash"> --from=base /usr/src/app/src /usr/src</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"sonar-scanner -Dsonar.projectBaseDir=/usr/src"</span>]</span>
 
-<span class="hljs-comment"># Run Build</span>
 <span class="hljs-keyword">FROM</span> base AS build
 <span class="hljs-keyword">WORKDIR</span><span class="bash"> /usr/src/app</span>
 <span class="hljs-keyword">COPY</span><span class="bash"> --from=base /usr/src/app/ .</span>
 <span class="hljs-keyword">RUN</span><span class="bash"> [<span class="hljs-string">"npm"</span>, <span class="hljs-string">"run"</span>, <span class="hljs-string">"build"</span>]</span>
 
-<span class="hljs-comment"># Start and Serve Web Page</span>
 <span class="hljs-keyword">FROM</span> nginx:stable
 <span class="hljs-keyword">COPY</span><span class="bash"> --from=build /usr/src/app/dist /usr/share/nginx/html</span>
 </span></span></foreignObject></svg></code></pre>
@@ -1149,7 +1236,7 @@ article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced
 <p>the result is a standard nginx 100mb image</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="8" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="10" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Docker multi stage</h4>
 <pre><code class="language-dockerfile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">FROM</span> node:latest AS base
 </span></span></foreignObject></svg></code></pre>
@@ -1165,12 +1252,12 @@ article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced
 <li>The build time of each stage is the same, but starting multiple containers and copying files between them increase the build time.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="9" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="11" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Docker multi stage</h4>
-<h4>Build of todo-front pipeline</h4>
-<p><img src="assets/docker-build.gif" alt="x% center" /></p>
+<h6>Build of todo-front pipeline</h6>
+<p><img src="assets/docker-build-90.gif" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="10" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="12" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Docker multi stage</h4>
 <h4>Target</h4>
 <ul>
@@ -1188,15 +1275,19 @@ article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced
 <li>This will stop after executing unit-test stage. For example in a PR / MR you could execute it until unit test stages, and when merging it with master you could execute all stages.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="11" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="13" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Docker multi stage</h4>
 <h3>look at docker files in these repos:</h3>
 <p><a href="https://github.com/sanguino/todo-front">https://github.com/sanguino/todo-front</a><br />
 <a href="https://github.com/sanguino/todo-api">https://github.com/sanguino/todo-api</a><br />
-<a href="https://github.com/sanguino/todo-health">https://github.com/sanguino/todo-health</a></p>
+<a href="https://github.com/sanguino/todo-auth">https://github.com/sanguino/todo-auth</a><br />
+<a href="https://github.com/sanguino/todo-app">https://github.com/sanguino/todo-app</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="12" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Docker healthcheck</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="14" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h1>Docker healthchecks</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="15" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Docker healthchecks</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">'2.3'</span>
 <span class="hljs-attr">services:</span>
 <span class="hljs-attr">  todo-mongo:</span>
@@ -1215,10 +1306,10 @@ article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced
 <p>the problem with depends_on is that the container could be running, but the service not. So when mongo container is running, the api and auth containers will run and fail conecting to mongo because the service is not running.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="13" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Docker healthcheck</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="16" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Docker healthchecks</h4>
 <ul>
-<li>Example of how to implement healthcheck using compose</li>
+<li>Example of how to implement healthcheck using docker compose and docker file</li>
 </ul>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">'2.3'</span>
 <span class="hljs-attr">services:</span>
@@ -1234,14 +1325,11 @@ article#presentation > svg[data-marpit-svg] > foreignObject[data-marpit-advanced
 <span class="hljs-attr">      todo-mongo:</span>
 <span class="hljs-attr">        condition:</span> <span class="hljs-string">service_healthy</span>
 </span></span></foreignObject></svg></code></pre>
-<ul>
-<li>Example of how to implement healthcheck in a docker file</li>
-</ul>
 <pre><code class="language-dockerfile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">HEALTHCHECK</span><span class="bash"> [OPTIONS] CMD <span class="hljs-built_in">command</span></span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="14" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Docker healthcheck</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="17" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Docker healthchecks</h4>
 <ul>
 <li>Regardless of the way you use it (compose or dockerfile), you could set some options:</li>
 </ul>
@@ -1259,8 +1347,8 @@ retries (default: 3) consecutive failures to be considered unhealthy
 <span class="hljs-attr">  disable:</span> <span class="hljs-literal">true</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="15" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Docker healthcheck</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="18" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Docker healthchecks</h4>
 <ul>
 <li>HEALTHCHECK let you implement a command that exposes if the container is healthy or not.</li>
 <li>The command should exit with 1 when non healthy and 0 when healthy.</li>
@@ -1268,8 +1356,8 @@ retries (default: 3) consecutive failures to be considered unhealthy
 <li>But docker swarm and docker compose v3.x do not respect depends_on, so you need to use a version upper than 2.1 and lower than 3.</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="16" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Docker healthcheck</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="19" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Docker healthchecks</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">version:</span> <span class="hljs-string">'2.3'</span>
 <span class="hljs-attr">services:</span>
   <span class="hljs-string">...</span>
@@ -1291,15 +1379,21 @@ retries (default: 3) consecutive failures to be considered unhealthy
 
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="17" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Todo app in docker compose</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="20" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h2>Todo app running in docker-compose</h2>
 <p><img src="assets/demogods.jpg" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="18" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Todo app in docker compose if demo gods doesn't listen</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="21" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h2>Todo app running in docker-compose</h2>
+<blockquote>
+<p>in case demo gods doesn't listen</p>
+</blockquote>
 <p><img src="assets/docker-compose.gif" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="19" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="22" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h1>Kubernetes</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="23" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes</h4>
 <blockquote>
 <p>Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support and tools are widely available.</p>
@@ -1316,9 +1410,9 @@ retries (default: 3) consecutive failures to be considered unhealthy
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="20" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="24" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes cluster</h4>
-<h3>Kubernetes is a system for managing containerized applications across a cluster of nodes</h3>
+<h6>Kubernetes is a system for managing containerized applications across a cluster of nodes</h6>
 <ul>
 <li>
 <p>Each node runs kubernetes itself and it is the place where your containerized apps run</p>
@@ -1331,63 +1425,59 @@ retries (default: 3) consecutive failures to be considered unhealthy
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="21" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h3>Kubernetes</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="25" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h3>Kubernetes cluster</h3>
 <p><img src="assets/cluster.jpg" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="22" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h3>Kubernetes</h3>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="26" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h3>Kubernetes nodes</h3>
 <p><img src="assets/node.jpg" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="23" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="27" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes Work Units</h4>
 <ul>
 <li><strong>Pod</strong> is the most basic unit in Kubernetes. It could consist of any number (1-n) of containers that share resources like storage, and have a unique network IP. In general the best option is to have 1 container per pod.</li>
 </ul>
 <p><img src="assets/pods.jpg" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="24" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="28" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<ul>
+<li><strong>Service</strong> is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. It could be exposed outside k8s with nodeport or with an ingress.</li>
+</ul>
+<p><img src="assets/service1.jpg" alt="x% center" /></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="29" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<ul>
+<li><strong>Deployment</strong> is your desired state of pods. It's a declarative syntax to create/update pods.</li>
+</ul>
+<p><img src="assets/deployment2.jpg" alt="x% center" /></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="30" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes Work Units</h4>
 <ul>
 <li>
 <p><strong>DNS</strong> every Service defined in the cluster (including the DNS server itself) is assigned a DNS name.</p>
 </li>
 <li>
-<p><strong>Service</strong> is the way you present a group of pods to other pods (services). It acts as a basic load balancer between pods. It could be exposed outside k8s with nodeport or with an ingress.</p>
-</li>
-<li>
-<p><strong>Deployment</strong> is your desired state of pods. It's a declarative syntax to create/update pods.</p>
-</li>
-<li>
 <p><strong>Label</strong> is an arbitrary tag to mark work units. It's the way to config which service will be able to forward traffic to those pods.</p>
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="25" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Kubernetes Work Units</h4>
-<p><img src="assets/service1.jpg" alt="x% center" /></p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="26" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="31" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes Work Units</h4>
 <ul>
 <li><strong>Ingress</strong> is a recommended way to manage external access to the services. It provides load balancing, SSL termination. It's a nginx that exposes a 80/443 port outside kubernetes.</li>
 </ul>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="27" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Kubernetes Work Units</h4>
 <p><img src="assets/ingress.jpg" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="28" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="32" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes Work Units</h4>
 <ul>
 <li><strong>Nodeport</strong> Exposes the Service on each Node's IP at a static port (the NodePort).</li>
 </ul>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="29" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Kubernetes Work Units</h4>
 <p><img src="assets/nodeport.jpg" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="30" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="33" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Minikube</h4>
 <ul>
 <li>Minikube is a cli tool that runs a single-node Kubernetes cluster in a virtual machine on your personal computer.</li>
@@ -1397,10 +1487,11 @@ $ kubectl config use-context minikube
 $ <span class="hljs-built_in">eval</span> $(minikube docker-env)
 $ minikube dashboard
 
-$ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
+$ kubectl create -f https://raw.githubusercontent.com/kubernetes/
+    heapster/master/deploy/kube-config/influxdb/heapster.yaml
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="31" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="34" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes declarative yaml</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
 <span class="hljs-attr">kind:</span> <span class="hljs-string">Service/Deployment/PersistentVolumeClaim/Ingress</span>
@@ -1414,10 +1505,10 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">      targetPort:</span> <span class="hljs-number">3000</span>
 </span></span></foreignObject></svg></code></pre>
 <blockquote>
-<p><code>metadata</code> and <code>selector</code> are what kubernetes uses to link a service, ingress, volumes and deployment between them.</p>
+<p><code>metadata</code> and <code>selector</code> are the labels that kubernetes use to link a service, ingress, volumes and deployment between them.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="32" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="35" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes declarative yaml</h4>
 <pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ kubectl apply -f fileordirectory
 </span></span></foreignObject></svg></code></pre>
@@ -1425,21 +1516,7 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <p>use <code>apply</code> instead of <code>create</code>, execution of apply multiple time makes kubernetes updates the config.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="33" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Services</h4>
-<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
-<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
-<span class="hljs-attr">metadata:</span>
-<span class="hljs-attr">  name:</span> <span class="hljs-string">todo-api</span>
-<span class="hljs-attr">spec:</span>
-<span class="hljs-attr">  selector:</span>
-<span class="hljs-attr">    app:</span> <span class="hljs-string">todo-api</span>
-<span class="hljs-attr">  ports:</span>
-<span class="hljs-attr">    - port:</span> <span class="hljs-number">3000</span>
-<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">3000</span>
-</span></span></foreignObject></svg></code></pre>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="34" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="36" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Deployments</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">apps/v1</span>
 <span class="hljs-attr">kind:</span> <span class="hljs-string">Deployment</span>
@@ -1465,7 +1542,21 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">        - containerPort:</span> <span class="hljs-number">3000</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="35" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="37" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Services</h4>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
+<span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">todo-api</span>
+<span class="hljs-attr">spec:</span>
+<span class="hljs-attr">  selector:</span>
+<span class="hljs-attr">    app:</span> <span class="hljs-string">todo-api</span>
+<span class="hljs-attr">  ports:</span>
+<span class="hljs-attr">    - port:</span> <span class="hljs-number">3000</span>
+<span class="hljs-attr">      targetPort:</span> <span class="hljs-number">3000</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="38" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Secrets</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
 <span class="hljs-attr">kind:</span> <span class="hljs-string">Secret</span>
@@ -1477,15 +1568,36 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">  TOKEN_EXPIRATION:</span> <span class="hljs-string">ODY0MDAwMDA=</span> <span class="hljs-string">("86400000"</span> <span class="hljs-string">base64</span> <span class="hljs-string">encoded)</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="36" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
-<h4>Deployments, environment with secrets</h4>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="39" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Secrets</h4>
+<pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">ConfigMap</span>
+<span class="hljs-attr">metadata:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">mongo-config</span>
+<span class="hljs-attr">data:</span>
+<span class="hljs-attr">  MONGO_HOST:</span> <span class="hljs-string">"todo-mongo"</span>
+<span class="hljs-attr">  MONGO_PORT:</span> <span class="hljs-string">"27017"</span>
+<span class="hljs-attr">  MONGO_DB:</span> <span class="hljs-string">"tasksDB"</span>
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="40" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>Deployments, environment with secrets and configs</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">        env:</span>
-<span class="hljs-attr">          - name:</span> <span class="hljs-string">MONGO_HOST</span>
-<span class="hljs-attr">            value:</span> <span class="hljs-string">"todo-mongo"</span>
+<span class="hljs-attr">           - name:</span> <span class="hljs-string">MONGO_HOST</span>
+<span class="hljs-attr">            valueFrom:</span>
+<span class="hljs-attr">              configMapKeyRef:</span>
+<span class="hljs-attr">                name:</span> <span class="hljs-string">mongo-config</span>
+<span class="hljs-attr">                key:</span> <span class="hljs-string">MONGO_HOST</span>
 <span class="hljs-attr">          - name:</span> <span class="hljs-string">MONGO_PORT</span>
-<span class="hljs-attr">            value:</span> <span class="hljs-string">"27017"</span>
+<span class="hljs-attr">            valueFrom:</span>
+<span class="hljs-attr">              configMapKeyRef:</span>
+<span class="hljs-attr">                name:</span> <span class="hljs-string">mongo-config</span>
+<span class="hljs-attr">                key:</span> <span class="hljs-string">MONGO_PORT</span>
 <span class="hljs-attr">          - name:</span> <span class="hljs-string">MONGO_DB</span>
-<span class="hljs-attr">            value:</span> <span class="hljs-string">"tasksDB"</span>
+<span class="hljs-attr">            valueFrom:</span>
+<span class="hljs-attr">              configMapKeyRef:</span>
+<span class="hljs-attr">                name:</span> <span class="hljs-string">mongo-config</span>
+<span class="hljs-attr">                key:</span> <span class="hljs-string">MONGO_DB</span>
 <span class="hljs-attr">          - name:</span> <span class="hljs-string">SUPER_SECRET</span>
 <span class="hljs-attr">            valueFrom:</span>
 <span class="hljs-attr">              secretKeyRef:</span>
@@ -1493,7 +1605,7 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">                key:</span> <span class="hljs-string">SUPER_SECRET</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="37" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="41" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Ingress</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">extensions/v1beta1</span>
 <span class="hljs-attr">kind:</span> <span class="hljs-string">Ingress</span>
@@ -1517,7 +1629,7 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">          servicePort:</span> <span class="hljs-number">3000</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="38" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="42" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h3>nodePort</h3>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span>
 <span class="hljs-attr">kind:</span> <span class="hljs-string">Service</span>
@@ -1533,10 +1645,10 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">      targetPort:</span> <span class="hljs-number">1234</span>
 </span></span></foreignObject></svg></code></pre>
 <blockquote>
-<p>you could expose any service using nodeport directly (&gt; 30000). This is useful for admins like this or one service alone.</p>
+<p>you could expose any service using nodeport directly (&gt; 30000). This is useful for admins like mongo admin, but not recomended to expose an api.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="39" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="43" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Deployments, liveness and readiness probes</h4>
 <ul>
 <li>
@@ -1553,7 +1665,7 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <p>Configuring correctly the probes, let you initiate your application in order, and when a pod has problem, let it and other pods to react.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="40" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="44" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Deployments, liveness and readiness probes</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">        livenessProbe:</span>
 <span class="hljs-attr">          httpGet:</span>
@@ -1576,21 +1688,25 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">          successThreshold:</span> <span class="hljs-number">1</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="41" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="45" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Todo app in kubernetes</h4>
 <p><img src="assets/demogods2.jpg" alt="x% center" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="42" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="46" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes Autoscaling</h4>
 <ul>
-<li><strong>Horizontal Pod Autoscaler</strong> scales the number of pod replicas. You could use CPU, memory or custom metrics as the triggers to scale more pod replicas or less.</li>
-<li><strong>Vertical Pods Autoscaler</strong> allocates more (or less) cpu or memory to existing pods.</li>
+<li>
+<p><strong>Horizontal Pod Autoscaler</strong> scales the number of pod replicas. You could use CPU, memory or custom metrics as the triggers to scale more pod replicas or less.</p>
+</li>
+<li>
+<p><strong>Vertical Pods Autoscaler</strong> allocates more (or less) cpu or memory to existing pods.</p>
+</li>
 </ul>
 <blockquote>
 <p>VPA and HPA are not yet compatible with each other and cannot work on the same pods.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="43" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="47" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h4>Kubernetes Autoscaling</h4>
 <pre><code class="language-yaml"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">autoscaling/v2beta1</span>
 <span class="hljs-attr">kind:</span> <span class="hljs-string">HorizontalPodAutoscaler</span>
@@ -1610,7 +1726,16 @@ $ kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master
 <span class="hljs-attr">      type:</span> <span class="hljs-string">Resource</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="44" data-marpit-pagination-total="44" style="--class:invert;--paginate:true;--theme:default;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-marpit-fragments="4" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="48" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
+<h4>TODO for the next day</h4>
+<ul>
+<li data-marpit-fragment="1">best autoscaling examples</li>
+<li data-marpit-fragment="2">run it in openshift</li>
+<li data-marpit-fragment="3">configure hooks and pipelines to automatic build and deply on git changes</li>
+<li data-marpit-fragment="4">change ingress to router</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-class="invert" data-paginate="true" data-theme="default" class="invert" data-marpit-pagination="49" data-marpit-pagination-total="49" style="--class:invert;--paginate:true;--theme:default;">
 <h1>The End</h1>
 <p>Thank you very much</p>
 </section>
