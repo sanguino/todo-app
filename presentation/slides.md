@@ -17,7 +17,7 @@ https://github.com/sanguino/todo-app
 4. Todo app running in docker-compose
 5. Kubernetes
 7. Minikube
-9. Liveness and readyness
+9. Liveness and readiness
 10. Todo app running in kubernetes
 
 ---
@@ -30,12 +30,16 @@ https://github.com/sanguino/todo-app
 
 ---
 
+TODO: architecture
+
+---
+
 
 ### Docker multi stage
 
-- Multi-stage builds allow you to create multiple intermediate images from the same Dockerfile.
+- Multi-stage allows you to create multiple intermediate images from the same Dockerfile.
 
-- You can use multiple FROM statements in your Dockerfile. Each FROM instruction begins a new stage of the build. 
+- You can use multiple FROM statements in your Dockerfile. Each FROM instruction determines a new stage of the build. 
 
 - You can selectively copy artifacts from one stage to another, leaving behind everything you don't want in the final image.
 
@@ -65,7 +69,7 @@ CMD ["nginx"]
 #### Docker multi stage
 
 ``` dockerfile
-# Copy in our code, run NPM Install and Lint Code
+# Copy, run NPM Install, Lint and Test our code.
 FROM node-chrome AS base
 WORKDIR /usr/src/app
 COPY ./ .
@@ -107,7 +111,7 @@ COPY --from=base /usr/src/app/ .
 - In production we will have only a nginx standard image and `dist` files.
 
 ###### CONS
-- Build time of each stage is the same, but starting multiple containers and copying files between them increase the build time.
+- The build time of each stage is the same, but starting multiple containers and copying files between them increase the build time.
 
 ---
 
@@ -135,7 +139,7 @@ build:
   target: build-env
 ...
 ```
-- This will stop after executing unit-test. For example in a PR / MR you could execute it until unit test, and all the stages after merging it with master.
+- This will stop after executing unit-test stage. For example in a PR / MR you could execute it until unit test stages, and when merging it with master you could execute all stages.
 
 ---
 
@@ -191,14 +195,6 @@ services:
 ``` dockerfile
 HEALTHCHECK [OPTIONS] CMD command
 ```
----
-
-#### Docker healthcheck
-
-- HEALTHCHECK let you implement a command that exposes if the container is healthy or not. 
-- The command should exit with 1 when non healthy and 0 when healthy.
-- Using condition `service_healthy` on `dependes_on` will make api container wait until mongo is up to starts.
-- But docker swarm and docker compose v3.x do not respect depends_on, so you need to use a version upper than 2.1 and lower than 3.
 
 ---
 
@@ -228,10 +224,10 @@ healthcheck:
 
 #### Docker healthcheck
 
-- HEALTHCHECK let you implement a command that expose if the container is healthy or not. 
-- The command should exit with 1 when non healthy and 0 when healthy
-- Using condition `service_healthy` on `dependes_on` will make api container waits until mongo is up to starts.
-- But docker swarm, and docker compose v3.x, does not respect depends_on, so you need to stay in version upper than 2.1 and less than 3.
+- HEALTHCHECK let you implement a command that exposes if the container is healthy or not. 
+- The command should exit with 1 when non healthy and 0 when healthy.
+- Using condition `service_healthy` on `dependes_on` compose will wait until mongo is up to start api container.
+- But docker swarm and docker compose v3.x do not respect depends_on, so you need to use a version upper than 2.1 and lower than 3.
 
 ---
 
@@ -352,7 +348,7 @@ services:
 
 #### Kubernetes Work Units
 
-- **Nodeport** Exposes the Service on each Nodeâ€™s IP at a static port (the NodePort).
+- **Nodeport** Exposes the Service on each NodeÃ¢â‚¬â„¢s IP at a static port (the NodePort).
 
 ---
 
@@ -548,6 +544,20 @@ spec:
 #### Todo app in kubernetes
 
 ![x% center](assets/demogods2.jpg)
+
+---
+
+#### Kubernetes Autoscaling
+
+- **Horizontal Pod Autoscaler** scales the number of pod replicas. You could use CPU, memory or custom metrics as the triggers to scale more pod replicas or less.
+- **Vertical Pods Autoscaler** allocates more (or less) cpu or memory to existing pods.
+
+> VPA and HPA are not yet compatible with each other and cannot work on the same pods.
+
+---
+
+kubectl create -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
+
 
 ---
 
