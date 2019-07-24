@@ -4,10 +4,7 @@
   "description": "Todo app devops repository",
   "main": "index.js",
   "scripts": {
-    "marp": "npm run marp:pdf & npm run marp:html & npm run marp:pptx",
-    "marp:pdf": "marp slides.md --pdf -o out/slides.pdf",
-    "marp:pptx": "marp slides.md --pptx -o out/slides.pptx",
-    "marp:html": "marp slides.md -o out/slides.html",
+    "marp:pdf": "marp slides.md --pdf -o out/slides.pdf --allow-local-files",
     "premakeall": "rm -rf out/assets",
     "postmakeall": "cp -R assets out && open out/slides.html",
     "makeall": "node-sass themes/maik.scss themes/maik.css && marp slides.md  --theme-set themes/maik.css --output out/slides.html"
